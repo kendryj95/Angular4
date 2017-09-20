@@ -7,18 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PlatziSquare';
-  a = 10;
-  listo = false;
-  nombre:string = '';
-  apellido:string = '';
+  lugares:any = [
+    {active: true, nombre:"Floreria la gardenia"},
+    {active: true, nombre:"Donas la pasadita"},
+    {active: true, nombre:"Veterinaria huellitas felices"},
+    {active: false, nombre:"Desarrolladores systems"},
+    {active: true, nombre:"C.C el paseito"},
+    {active: false, nombre:"Castillo la princesa"},
+  ]
 
   constructor(){
-  	setTimeout(() => {
-  		this.listo = true;
-  	},3000);
-  }
-
-  hacerAlgo(){
-  	alert("Probando Event Binding");
+  	
   }
 }
