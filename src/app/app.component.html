@@ -3,8 +3,20 @@
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
 
+<!-- <ul>
+	<ng-container *ngFor="let persona of personas">
+		<li *ngIf="persona.edad>18">{{persona.nombre}} tiene {{persona.edad}} años</li>
+	</ng-container>
+</ul> -->
+
 <ul>
-  <ng-container *ngFor="let lugar of lugares">
-    <li *ngIf="lugar.ver">{{lugar.nombre}}</li>
-  </ng-container>
+	<ng-container *ngFor="let lugar of lugares">
+		<li *ngIf="lugar.active">{{lugar.nombre}}</li>
+	</ng-container>
+</ul>
+
+<ul>
+	<ng-container *ngFor="let lugar of lugares; let i=index">
+		<li [ngStyle]="{color: (lugar.active) ? 'black' : 'gray'}" [ngClass]="{'numero-par': (i+1)%2 !== 0}">{{lugar.nombre}}</li>
+	</ng-container>
 </ul>

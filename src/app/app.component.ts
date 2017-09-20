@@ -8,12 +8,20 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'PlatziSquare';
 
+  personas:any = [
+   {nombre: 'Kendry Ortiz', edad: 22},
+   {nombre: 'Victor Fernandez', edad: 24},
+   {nombre: 'Carmen E. Fernandez', edad: 17},
+   {nombre: 'Kimberly Ortiz', edad: 10},
+   {nombre: 'Zharick Vega Ortiz', edad: 4}
+  ];
+
   lugares:any = [
-  {ver:true, nombre: 'Prueba 1'},
-  {ver:true, nombre: 'Prueba 2'},
-  {ver:false, nombre: 'Prueba 3'},
-  {ver:true, nombre: 'Prueba 4'},
-  {ver:true, nombre: 'Prueba 5'}
+    {active: true, nombre: 'Floristeria las rosas'},
+    {active: true, nombre: 'Parque los niñitos'},
+    {active: false, nombre: 'C.C el paseo'},
+    {active: false, nombre: 'Puente el vistozo'},
+    {active: true, nombre: 'Stadium el deporte'},
   ];
 
   lat:number = 10.6729857;
