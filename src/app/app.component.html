@@ -1,19 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <h4>
-    {{a + 18}}
-  </h4>
-  
-  <hr>
-  <button [disabled]="!listo" (click)="hacerAlgo()">Click me</button>
-  <hr>
-  <input type="text" placeholder="Tu nombre" [(ngModel)]="nombre"> &nbsp;
-  <input type="text" placeholder="Tu apellido" [(ngModel)]="apellido">
-  <br>
-  Mi nombre completo es: {{nombre}} {{apellido}}
-  </div>
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+<ul>
+  <ng-container *ngFor="let lugar of lugares">
+    <li *ngIf="lugar.ver">{{lugar.nombre}}</li>
+  </ng-container>
+</ul>
 
 

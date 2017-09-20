@@ -7,18 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PlatziSquare';
-  a = 10;
-  listo = false;
-  nombre:string = '';
-  apellido:string = '';
 
+  lugares:any = [
+  {ver:true, nombre: 'Prueba 1'},
+  {ver:true, nombre: 'Prueba 2'},
+  {ver:false, nombre: 'Prueba 3'},
+  {ver:true, nombre: 'Prueba 4'},
+  {ver:true, nombre: 'Prueba 5'}
+  ];
+
+  lat:number = 10.6729857;
+  lng:number = -71.6084183;
+  
   constructor(){
-  	setTimeout(() => {
-  		this.listo = true;
-  	},3000);
+  	
   }
 
-  hacerAlgo(){
-  	alert("Probando Event Binding");
-  }
 }
