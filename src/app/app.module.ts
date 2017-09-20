@@ -11,7 +11,10 @@ import { AgmCoreModule } from '@agm/core';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDgloidGgQAdItb96y0MPvEJzBf8HG0kjg'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
