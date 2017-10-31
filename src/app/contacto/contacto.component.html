@@ -1,0 +1,46 @@
+<div class="well">
+    <a routerLink="/lugares">Lugares</a> / Contacto
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<hr>
+
+<div class="container">
+    <div class="alert alert-info">
+        <p>Para más información comunicate con nosotros y te responderemos a la brevedad posible. Cualquier sugerencia, duda y/o inquietud.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <label for="name">Nombre:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <br>
+            <label for="email">Correo:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <br>
+            <label for="msj">Mensaje:</label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <textarea name="" id="msj" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Telefonos</h3>
+                <hr>
+                <small>04246319642 / 02614180074</small>
+                <p style="font-style: oblique;">Av. Milagro Norte B/Los Reyes Magos</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <a href="#" class="btn btn-primary">Enviar</a>
+    <a href="#" class="btn btn-danger" routerLink="/lugares">Cancelar</a>
+</div>

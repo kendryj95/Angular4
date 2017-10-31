@@ -16,35 +16,11 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Contacto</a></li>
+				<li routerLinkActive="active"><a routerLink="/lugares">Inicio <span class="sr-only">(Actual)</span></a></li>
+				<li routerLinkActive="active"><a routerLink="/contacto">Contacto</a></li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
 
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
-<hr>
-<!-- <ul>
-	<ng-container *ngFor="let persona of personas">
-		<li *ngIf="persona.edad>18">{{persona.nombre}} tiene {{persona.edad}} años</li>
-	</ng-container>
-</ul> -->
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			<h2>Lugares Cercanos</h2>
-			<ul class="list-group">
-				<ng-container *ngFor="let lugar of lugares">
-					<li class="list-group-item" *ngIf="lugar.active">{{lugar.nombre}}</li>
-				</ng-container>
-			</ul>
-		</div>
-		<div class="col-md-4">
-			<h2>Destacados</h2>
-		</div>
-	</div>
-</div>
+<router-outlet></router-outlet> <!-- Raíz donde se mostrarán las vistas de los demas modulos -->
