@@ -1,4 +1,6 @@
 import {Injectable} from "@angular/core";
+import {AngularFireDatabase} from "angularfire2/database";
+import {Http} from "@angular/http";
 @Injectable()
 export class LugaresService{
     lugares:any = [
@@ -9,12 +11,24 @@ export class LugaresService{
         {id: 5,plan: 'pagado', cercania: 3, distancia: 6,active: true, nombre: 'Stadium el deporte'},
     ];
 
+    constructor(private afDB: AngularFireDatabase, private http: Http){}
+
     public getLugares(){
-        return this.lugares;
+        return this.afDB.list("lugares/");
     }
 
     public buscarLugar(id){
         return this.lugares.filter((lugar) => {
                 return lugar.id == id})[0] || null;
+    }
+    
+    public guardarLugar(lugar){
+        console.log(lugar);
+        this.afDB.database.ref("lugares/"+lugar.id).set(lugar);
+    }
+
+    public getGeoData(direccion){
+        //http://maps.google.com/maps/api/geocode/json?address=9-55+calle+72,+Bogota,Colombia
+        return this.http.get('http://maps.google.com/maps/api/geocode/json?address='+direccion);
     }
 }

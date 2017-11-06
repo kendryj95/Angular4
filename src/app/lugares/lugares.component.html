@@ -12,10 +12,12 @@
     <div class="row">
         <div class="col-md-8">
             <h2>Lugares Cercanos</h2>
+            <a routerLink="/crear" class="btn btn-primary">Crear Negocio +</a>
+            <br>
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
                     <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
-                        <li class="list-group-item" *ngIf="lugar.active">{{lugar.nombre}}</li>
+                        <li class="list-group-item">{{lugar.nombre}} <a title="Editar" class="btn btn-default" routerLink="/crear/{{lugar.id}}"><i class="glyphicon glyphicon-pencil"></i></a></li>
                     </a>
                 </ng-container>
             </ul>

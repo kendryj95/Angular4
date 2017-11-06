@@ -1,0 +1,81 @@
+<div class="well">
+    <a routerLink="/lugares">Lugares</a> / Crear Lugar
+</div>
+
+<div class="container">
+    <div class="alert alert-info">
+        <p>Para más información comunicate con nosotros y te responderemos a la brevedad posible. Cualquier sugerencia, duda y/o inquietud.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" id="name" [(ngModel)]="lugar.nombre">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="distancia">Distancia:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-upload"></i></span>
+                    <input type="number" class="form-control" id="distancia" [(ngModel)]="lugar.distancia">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cercania">Cercania:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-download"></i></span>
+                    <input type="number" class="form-control" id="cercania" [(ngModel)]="lugar.cercania">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripcion:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                    <textarea name="" id="description" cols="30" rows="10" class="form-control" [(ngModel)]="lugar.descripcion"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="plan">Plan:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                    <input type="text" class="form-control" id="plan" [(ngModel)]="lugar.plan">
+                </div>
+            </div>
+            <h3>Datos de Dirección</h3>
+            <div class="form-group">
+                <label for="calle">Calle y Número:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input type="text" class="form-control" id="calle" [(ngModel)]="lugar.calle">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ciudad">Ciudad:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                    <input type="text" class="form-control" id="ciudad" [(ngModel)]="lugar.ciudad">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pais">País:</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-plane"></i></span>
+                    <input type="text" class="form-control" id="pais" [(ngModel)]="lugar.pais">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well">
+                <h3>Telefonos</h3>
+                <hr>
+                <small>04246319642 / 02614180074</small>
+                <p style="font-style: oblique;">Av. Milagro Norte B/Los Reyes Magos</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+    <a class="btn btn-danger" routerLink="/lugares">Cancelar</a>
+</div>
