@@ -18,8 +18,9 @@ export class LugaresService{
     }
 
     public buscarLugar(id){
-        return this.lugares.filter((lugar) => {
-                return lugar.id == id})[0] || null;
+        /*return this.lugares.filter((lugar) => {
+                return lugar.id == id})[0] || null;*/
+          return this.afDB.object("lugares/"+id);
     }
     
     public guardarLugar(lugar){

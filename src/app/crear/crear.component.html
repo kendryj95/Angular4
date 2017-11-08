@@ -76,6 +76,9 @@
         </div>
     </div>
     <hr>
-    <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+    <a class="btn btn-primary" *ngIf="lugar.id; else blockActualizar" (click)="editarLugar()">Enviar</a>
+    <ng-template #blockActualizar>
+        <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+    </ng-template>
     <a class="btn btn-danger" routerLink="/lugares">Cancelar</a>
 </div>
