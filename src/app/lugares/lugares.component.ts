@@ -20,12 +20,16 @@ export class LugaresComponent {
     lng:number = -71.6084183;
 
     lugares = null;
+    error = null;
     constructor(private lugaresService:LugaresService){
         lugaresService.getLugares()
             .subscribe(lugares =>{
-            this.lugares = lugares.json();
+            this.lugares = lugares;
                 let $this = this;
                 this.lugares = Object.keys($this.lugares).map(function (key) { return $this.lugares[key]; });
-        });
+        }, error => {
+                console.log('ErrorObject: ', error);
+                this.error = 'En estos momentos hay un conflicto con la plataforma, en los proximos minutos será resuelto. Error: '+error.statusText;
+            });
     }
 }
