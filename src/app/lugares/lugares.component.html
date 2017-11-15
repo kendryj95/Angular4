@@ -1,4 +1,4 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="13">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
     <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
 </agm-map>
 <hr>
@@ -23,14 +23,16 @@
             <br>
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
-                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
                         <li class="list-group-item">
-                            {{lugar.nombre}}
+                            <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
+                                <h4>{{lugar.nombre}}</h4>
+                            </a>
                             <br>
-                            <small style="color: gray">Creado: {{lugar.id | date | uppercase}}</small>
+                            <small style="color: gray">Creado: {{lugar.id | date:'short' | uppercase}}</small>
+                            <br>
+                            <p>{{lugar.descripcion}}</p>
                             <a title="Editar" class="btn btn-default" routerLink="/crear/{{lugar.id}}"><i class="glyphicon glyphicon-pencil"></i></a>
                         </li>
-                    </a>
                 </ng-container>
             </ul>
         </div>

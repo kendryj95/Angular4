@@ -16,19 +16,23 @@ export class LugaresComponent {
         {nombre: 'Zharick Vega Ortiz', edad: 4}
     ];
 
-    lat:number = 10.6729857;
-    lng:number = -71.6084183;
+    lat:number = 0;
+    lng:number = 0;
 
     lugares = null;
     error = null;
     constructor(private lugaresService:LugaresService){
         lugaresService.getLugares()
             .subscribe(lugares =>{
+                console.log('Lugares: ',lugares);
             this.lugares = lugares;
                 let $this = this;
                 this.lugares = Object.keys($this.lugares).map(function (key) { return $this.lugares[key]; });
+                this.lat = this.lugares[1].lat;
+                this.lng = this.lugares[1].lng;
+                console.log(typeof this.lugares,': ', this.lugares);
         }, error => {
-                console.log('ErrorObject: ', error);
+                console.log(error);
                 this.error = 'En estos momentos hay un conflicto con la plataforma, en los proximos minutos será resuelto. Error: '+error.statusText;
             });
     }

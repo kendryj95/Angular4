@@ -46,7 +46,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDgloidGgQAdItb96y0MPvEJzBf8HG0kjg'
+      apiKey: 'AIzaSyDrylV6wvpdPShiN8QQ2Mt_DCffujC5GrA'
     }),
       RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig),
