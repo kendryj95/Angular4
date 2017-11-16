@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {LugaresService} from "../services/lugares.service";
-import {trigger, state, style} from "@angular/animations";
+import {trigger, state, style, transition, animate} from "@angular/animations";
 
 @Component({
     selector: 'app-lugares',
@@ -8,21 +8,33 @@ import {trigger, state, style} from "@angular/animations";
     animations: [
         trigger('contenedorAnimable', [
             state('inicial', style({
-                opacity: 0,
-                backgroundColor: 'green',
-                transform: 'rotate3d(0, 0, 0, 0deg)'
+                opacity: 0
             })),
             state('final', style({
-                opacity: 1,
-                backgroundColor: 'yellow',
-                transform: 'rotate3d(5, 10, 20, 30deg)'
-            }))
+                opacity: 1
+            })),
+            transition('inicial => final', animate(3000)),
+            transition('final => inicial', animate(1000))
         ])
     ]
 })
 export class LugaresComponent {
     title = 'PlatziSquare';
-    state = 'final';
+    state = 'inicial';
+    
+    animar(){ // Funcion para ejecutar la animación a través de un botón.
+        this.state = (this.state === 'final') ? 'inicial' : 'final';
+    }
+
+    contenedorInicia(e){
+        console.log("Iniciado!!");
+        console.log(e);
+    }
+
+    contenedorTermina(e){
+        console.log("Terminado!!");
+        console.log(e);
+    }
 
     personas:any = [
         {nombre: 'Kendry Ortiz', edad: 22},
@@ -40,15 +52,13 @@ export class LugaresComponent {
     constructor(private lugaresService:LugaresService){
         lugaresService.getLugares()
             .subscribe(lugares =>{
-                console.log('Lugares: ',lugares);
             this.lugares = lugares;
                 let $this = this;
                 this.lugares = Object.keys($this.lugares).map(function (key) { return $this.lugares[key]; });
                 this.lat = this.lugares[1].lat;
                 this.lng = this.lugares[1].lng;
-                console.log(typeof this.lugares,': ', this.lugares);
+                this.state = 'final';
         }, error => {
-                console.log(error);
                 this.error = 'En estos momentos hay un conflicto con la plataforma, en los proximos minutos será resuelto. Error: '+error.statusText;
             });
     }

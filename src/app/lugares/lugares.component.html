@@ -22,10 +22,14 @@
 
             <br>
 
-            <div id="cuadrado" [@contenedorAnimable]="state"></div>
+            <!--<div id="cuadrado" [@contenedorAnimable]="state" (@contenedorAnimable.start)="contenedorInicia($event)" (@contenedorAnimable.done)="contenedorTermina($event)"></div>
+            <br>
+            <button class="btn btn-default" (click)="animar()">Animar</button>--> <!-- EJEMPLO DE ANIMACION -->
+
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
                         <li class="list-group-item">
+                            <span style="color: #ffb635" class="glyphicon glyphicon-star pull-right" title="Empresa Destacada"></span>
                             <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
                                 <h4>{{lugar.nombre}}</h4>
                             </a>
@@ -38,8 +42,18 @@
                 </ng-container>
             </ul>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" [@contenedorAnimable]="state">
             <h2>Destacados</h2>
+            <ng-container *ngFor="let lugar of lugares">
+                <div class="bg-warning padding" *ngIf="lugar.plan == 'pagado'">
+                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
+                        <h4>{{lugar.nombre}}</h4>
+                    </a>
+                    <br>
+
+                    <p [innerHtml]="lugar.descripcion | linkifystr"></p>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>
