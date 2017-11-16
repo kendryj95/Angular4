@@ -21,6 +21,8 @@
             </div>
 
             <br>
+
+            <div id="cuadrado" [@contenedorAnimable]="state"></div>
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
                         <li class="list-group-item">
@@ -30,7 +32,7 @@
                             <br>
                             <small style="color: gray">Creado: {{lugar.id | date:'short' | uppercase}}</small>
                             <br>
-                            <p>{{lugar.descripcion}}</p>
+                            <p [innerHtml]="lugar.descripcion | linkifystr"></p>
                             <a title="Editar" class="btn btn-default" routerLink="/crear/{{lugar.id}}"><i class="glyphicon glyphicon-pencil"></i></a>
                         </li>
                 </ng-container>
