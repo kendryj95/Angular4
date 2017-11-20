@@ -29,7 +29,7 @@
             <ul class="list-group">
                 <ng-container *ngFor="let lugar of lugares">
                         <li class="list-group-item">
-                            <span style="color: #ffb635" class="glyphicon glyphicon-star pull-right" title="Empresa Destacada"></span>
+                            <span *ngIf="lugar.plan == 'pagado'" style="color: #ffb635" class="glyphicon glyphicon-star pull-right" title="Empresa Destacada"></span>
                             <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'edit'}">
                                 <h4>{{lugar.nombre}}</h4>
                             </a>
