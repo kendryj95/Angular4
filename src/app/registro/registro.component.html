@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="well">
+        <div class="text-center">
+          <h4>Sign Up</h4>
+        </div>
+        <div class="form-group">
+          <label for="user">Email</label>
+          <input type="text" id="user" class="form-control" placeholder="Email (*)" [(ngModel)]="registro.email">
+        </div>
+        <div class="form-group">
+          <label for="pass">Contraseña</label>
+          <input type="password" id="pass" class="form-control" placeholder="Contraseña (*)" [(ngModel)]="registro.password">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" (click)="registrar()">Registrarse!</button>
+          <button class="btn btn-default btn-block">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

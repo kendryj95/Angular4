@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {AutorizacionService} from "./services/autorizacion.service";
+import {Observable} from 'rxjs';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
+  loggedIn = false;
+  user:string = '';
+
+  constructor(private autorizacionService: AutorizacionService){
+    this.autorizacionService.isLogged()
+        .subscribe(result => {
+          if(result && result.uid){
+            this.loggedIn = true;
+            this.user = this.autorizacionService.currentUser();
+          } else {
+            this.loggedIn = false;
+          }
+        }, error => {
+          this.loggedIn = false;
+        });
+  }
+    
+    
+  logout(){
+      this.autorizacionService.logout();
+  }  
 }

@@ -18,18 +18,25 @@ import {CrearComponent} from "./crear/crear.component";
 import {HttpModule} from "@angular/http";
 import {LinkifystrPipe} from "./pipes/linkifystr.pipe";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { AutorizacionService } from './services/autorizacion.service'
+import {MyGuardService} from "./services/my-guard.service";
+import {GuardLoginNotAccessService} from "./services/guard-login-not-access.service";
 
 const appRoutes: Routes = [
   {path: '', component: LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear', component: CrearComponent},
-  {path: 'crear/:id', component: CrearComponent}
+  {path: 'crear', component: CrearComponent, canActivate: [MyGuardService]},
+  {path: 'crear/:id', component: CrearComponent, canActivate: [MyGuardService]},
+  {path: 'login', component: LoginComponent, canActivate: [GuardLoginNotAccessService]},
+  {path: 'registro', component: RegistroComponent, canActivate: [GuardLoginNotAccessService]}
 ];
 export const firebaseConfig = {
   apiKey: "AIzaSyCczpvih1NZ1eIvOnO8PlcY5SFnbtc17us",
-  authDomain: "kendrysquare.firebaseapp.com",
+  authDomain: "kendrysquare1.firebaseapp.com",
   databaseURL: "https://kendrysquare.firebaseio.com",
   storageBucket: "kendrysquare.appspot.com",
   messagingSenderId: "780633036985"
@@ -43,7 +50,9 @@ export const firebaseConfig = {
       LugaresComponent,
     ContactoComponent,
     CrearComponent,
-    LinkifystrPipe
+    LinkifystrPipe,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +67,7 @@ export const firebaseConfig = {
       HttpModule,
     BrowserAnimationsModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService, AutorizacionService, MyGuardService, GuardLoginNotAccessService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

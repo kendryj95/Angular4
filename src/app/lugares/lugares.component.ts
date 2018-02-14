@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LugaresService} from "../services/lugares.service";
 import {trigger, state, style, transition, animate} from "@angular/animations";
+import {AutorizacionService} from "../services/autorizacion.service";
 
 @Component({
     selector: 'app-lugares',
@@ -47,9 +48,11 @@ export class LugaresComponent {
     lat:number = 0;
     lng:number = 0;
 
+    loggedIn = false;
+
     lugares = null;
     error = null;
-    constructor(private lugaresService:LugaresService){
+    constructor(private lugaresService:LugaresService, private autorizacionService: AutorizacionService){
         lugaresService.getLugares()
             .subscribe(lugares =>{
             this.lugares = lugares;
@@ -60,6 +63,19 @@ export class LugaresComponent {
                 this.state = 'final';
         }, error => {
                 this.error = 'En estos momentos hay un conflicto con la plataforma, en los proximos minutos será resuelto. Error: '+error.statusText;
+                console.log("getLugares", error);
             });
+
+        this.autorizacionService.isLogged()
+            .subscribe(result => {
+                if(result && result.uid){
+                    this.loggedIn = true;
+                } else {
+                    this.loggedIn = false;
+                }
+            }, error => {
+                this.loggedIn = false;
+            });
+
     }
 }
